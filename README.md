@@ -26,7 +26,7 @@ The second half of the page has the checkboxes with department and sub-departmen
 ### Links
 
 - Code: [Github](https://github.com/kartikp962/react-app.git)
-- Live Site URL: [Github Pages](https://react-app-123.netlify.app/)
+- Live Site URL: [Netlify](https://react-app-123.netlify.app/)
 
 
 ### Built with
