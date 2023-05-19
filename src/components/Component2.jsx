@@ -30,7 +30,7 @@ function Component2() {
   const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
-    // Initialize the users state with the departments data
+    // With the departments data, initialize the users state
     setDepartments(departmentsData.departments.map((department) => ({
       ...department,
       isChecked: false,
