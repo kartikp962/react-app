@@ -55,35 +55,35 @@ export default function LoginPage() {
                 >
                 <div>
                     <TextField
-                    id="outlined-required"
-                    label="Name"
-                    type='text'
-                    name='name'
-                    value={formData.name}
-                    onChange={handleInputChange}
+                        id="outlined-required"
+                        label="Name"
+                        type='text'
+                        name='name'
+                        value={formData.name}
+                        onChange={handleInputChange}
                     />
 
                     <TextField
-                    id="outlined-number"
-                    label="Phone Number"
-                    type="number"
-                    name='number'
-                    value={formData.number}
-                    onChange={handleInputChange}
+                        id="outlined-number"
+                        label="Phone Number"
+                        type="number"
+                        name='number'
+                        value={formData.number}
+                        onChange={handleInputChange}
                     />
 
                     <TextField
-                    id="outlined-required"
-                    label="Email"
-                    type='email'
-                    name='email'
-                    value={formData.email}
-                    onChange={handleInputChange}
+                        id="outlined-required"
+                        label="Email"
+                        type='email'
+                        name='email'
+                        value={formData.email}
+                        onChange={handleInputChange}
                     />
                     
                     <Button 
-                    variant='outlined'
-                    type='submit'
+                        variant='outlined'
+                        type='submit'
                     >
                         Submit
                     </Button>

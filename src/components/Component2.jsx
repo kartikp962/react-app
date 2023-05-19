@@ -27,11 +27,11 @@ const departmentsData = {
 
 function Component2() {
 
-  const [users, setUsers] = useState([]);
+  const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
     // Initialize the users state with the departments data
-    setUsers(departmentsData.departments.map((department) => ({
+    setDepartments(departmentsData.departments.map((department) => ({
       ...department,
       isChecked: false,
       sub_departments: department.sub_departments.map((subDepartment) => ({
@@ -43,59 +43,59 @@ function Component2() {
 
   const handleDepartmentChange = (e) => {
     const { name, checked } = e.target;
-    let tempUsers = users.map((user) => ({
-      ...user,
-      isChecked: user.name === name ? checked : user.isChecked, // Update isChecked only for the clicked department
-      sub_departments: user.sub_departments.map((subDepartment) => ({
+    let tempUsers = departments.map((department) => ({
+      ...department,
+      isChecked: department.name === name ? checked : department.isChecked, // isChecked is updated only if the department is clicked
+      sub_departments: department.sub_departments.map((subDepartment) => ({
         ...subDepartment,
-        isChecked: user.name === name ? checked : subDepartment.isChecked // Update isChecked for sub-departments only if their parent department is clicked
+        isChecked: department.name === name ? checked : subDepartment.isChecked // isChecked is updated for sub-departments when their parent department is clicked before
       }))
     }));
-    setUsers(tempUsers);
+    setDepartments(tempUsers);
   };
   
 
   const handleSubDepartmentChange = (e, departmentName) => {
     const { name, checked } = e.target;
-    let tempUsers = users.map((user) => ({
-      ...user,
+    let tempUsers = departments.map((department) => ({
+      ...department,
       isChecked:
-        user.name === departmentName &&
-        user.sub_departments.every((subDepartment) =>
+        department.name === departmentName &&
+        department.sub_departments.every((subDepartment) =>
           subDepartment.name === name ? checked : subDepartment.isChecked
         ),
-      sub_departments: user.sub_departments.map((subDepartment) => ({
+      sub_departments: department.sub_departments.map((subDepartment) => ({
         ...subDepartment,
         isChecked: subDepartment.name === name ? checked : subDepartment.isChecked
       }))
     }));
-    setUsers(tempUsers);
+    setDepartments(tempUsers);
   };
   
 
   return (
     <div>
-      {users.map((user) => (
-        <div key={user.id}>
+      {departments.map((department) => (
+        <div key={department.id}>
           <Checkbox
             type="checkbox"
-            name={user.name}
+            name={department.name}
             checked={
-              user.isChecked ||
-              user.sub_departments.filter((subDepartment) => !subDepartment.isChecked)
+              department.isChecked ||
+              department.sub_departments.filter((subDepartment) => !subDepartment.isChecked)
                 .length === 0
             }
             onChange={handleDepartmentChange}
           />
-          <span>{user.name}</span>
+          <span>{department.name}</span>
           <ul style={{ listStyleType: 'none' }}>
-            {user.sub_departments.map((subDepartment) => (
+            {department.sub_departments.map((subDepartment) => (
               <li key={subDepartment.id}>
                 <Checkbox
                   type="checkbox"
                   name={subDepartment.name}
                   checked={subDepartment.isChecked}
-                  onChange={(e) => handleSubDepartmentChange(e, user.name)}
+                  onChange={(e) => handleSubDepartmentChange(e, department.name)}
                 />
                 <span>{subDepartment.name}</span>
               </li>
